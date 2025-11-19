@@ -9,6 +9,10 @@ app.use(express.json());
 
 connectDB();
 
+app.get("/", async (req, res) => {
+  res.send("Working.................!!!!!!!!!!!!!!!!1");
+});
+
 app.use("/api", require("./routes/userRoutes"));
 
 const PORT = process.env.PORT || 5000;
