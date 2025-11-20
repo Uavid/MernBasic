@@ -1,20 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-svc
+  name: backend
 spec:
-  type: ClusterIP
   selector:
     app: backend
   ports:
-    - port: 5000
+    - protocol: TCP
+      port: 5000
       targetPort: 5000
-
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
 spec:
   replicas: 1
   selector:
@@ -32,4 +31,4 @@ spec:
             - containerPort: 5000
           env:
             - name: MONGO_URI
-              value: "mongodb://mongo:27017/mernDB"
+              value: mongodb://mongo:27017/mernDB
